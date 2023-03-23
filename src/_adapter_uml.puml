@@ -1,0 +1,34 @@
+@startuml
+class AdapterPatternDemo {
++ {static} void main(String[])
+}
+class ReadFiles {
+~ FileAdapter FileAdapter
++ void read(String,String)
+}
+class FileAdapter {
+~ AdvancedFileReader advancedFilesReader
++ void read(String,String)
+}
+interface FileReader {
+~ void read(String,String)
+}
+interface AdvancedFileReader {
+~ void readJpg(String)
+~ void readPng(String)
+}
+class ReaderPng {
++ void readPng(String)
++ void readJpg(String)
+}
+class ReaderJpg {
++ void readJpg(String)
++ void readPng(String)
+}
+
+
+FileReader <|.. ReadFiles
+FileReader <|.. FileAdapter
+AdvancedFileReader <|.. ReaderPng
+AdvancedFileReader <|.. ReaderJpg
+@enduml
